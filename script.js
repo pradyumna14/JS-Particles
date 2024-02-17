@@ -1,19 +1,33 @@
-document.getElementById("glitterButton").addEventListener("click", function() {
-    createCrackers();
-});
+const duration = 15 * 1000,
+  animationEnd = Date.now() + duration,
+  defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-function createCrackers() {
-    const container = document.getElementById("glitterContainer");
-    for (let i = 0; i < 10; i++) { // Adjust the number of crackers as needed
-        const cracker = document.createElement("div");
-        cracker.className = "cracker";
-        cracker.style.left = Math.random() * window.innerWidth + "px";
-        cracker.style.top = Math.random() * window.innerHeight + "px";
-        container.appendChild(cracker);
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+document.getElementById('confettiButton').addEventListener('click', function() {
+  const interval = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
     }
 
-    // Clear the particles after 2 seconds
-    setTimeout(function() {
-        container.innerHTML = "";
-    }, 2000);
-}
+    const particleCount = 50 * (timeLeft / duration);
+
+    // since particles fall down, start a bit higher than random
+    confetti(
+      Object.assign({}, defaults, {
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      })
+    );
+    confetti(
+      Object.assign({}, defaults, {
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      })
+    );
+  }, 250);
+});
