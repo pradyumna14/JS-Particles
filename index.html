@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confetti Animation</title>
+    <title>Team .EXE</title>
     <style>
-        /* CSS styles for the container */
+       
         body, html {
             height: 100%;
             margin: 0;
@@ -14,7 +14,6 @@
             align-items: center;
         }
 
-        /* CSS styles for the button */
         #startConfetti {
             background-color: #4CAF50; /* Green */
             border: none;
@@ -29,7 +28,6 @@
             border-radius: 8px;
         }
 
-        /* Hover effect */
         #startConfetti:hover {
             background-color: #45a049; /* Darker green */
         }
@@ -38,7 +36,7 @@
     <script src="path/to/confetti.js"></script>
 </head>
 <body>
-    <!-- Your HTML content goes here -->
+
     <button id="startConfetti">Click Here</button>
 
     <script>
@@ -60,7 +58,6 @@
 
                 const particleCount = 50 * (timeLeft / duration);
 
-                // since particles fall down, start a bit higher than random
                 confetti(
                     Object.assign({}, defaults, {
                         particleCount,
